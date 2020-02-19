@@ -1,4 +1,4 @@
 # coordonnées
-Module Python.
-Changements de coordonnées astronomiques par calcul matriciel.
-D'après "connaissance des temps" édition 2018.
+Module Python.\n
+Changements de coordonnées astronomiques par calcul matriciel.\n
+D'après "connaissance des temps" édition 2018.\n
