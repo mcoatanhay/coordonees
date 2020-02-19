@@ -13,13 +13,13 @@ try:
     import mes_modules_path
 except:
     pass
-from incertitudes.incert import cos, sin
+from incertitudes.incert import cos, sin, i
 import numpy as np
 
 # Définitions constantes et variables globales
 
 # Définitions fonctions et classes
-def rotation1(theta, x, y, z):
+def rotation1(theta, U):
     """
         Transforme les coordonnées cartésiennes (x, y, z) par une rotation
         d'angle theta autour de l'axe (Ox).
@@ -27,12 +27,9 @@ def rotation1(theta, x, y, z):
     R = np.array([[1, 0,           0],
                   [0, cos(theta),  sin(theta)],
                   [0, -sin(theta), cos(theta)]])
-    U = np.array([[x],
-                  [y],
-                  [z]])
     return np.dot(R, U)
 
-def rotation2(theta, x, y, z):
+def rotation2(theta, U):
     """
         Transforme les coordonnées cartésiennes (x, y, z) par une rotation
         d'angle theta autour de l'axe (Oy).
@@ -40,12 +37,9 @@ def rotation2(theta, x, y, z):
     R = np.array([[cos(theta), 0, -sin(theta)],
                   [0,          1, 0],
                   [sin(theta), 0, cos(theta)]])
-    U = np.array([[x],
-                  [y],
-                  [z]])
     return np.dot(R, U)
 
-def rotation3(theta, x, y, z):
+def rotation3(theta, U):
     """
         Transforme les coordonnées cartésiennes (x, y, z) par une rotation
         d'angle theta autour de l'axe (Oz).
@@ -53,10 +47,15 @@ def rotation3(theta, x, y, z):
     R = np.array([[cos(theta),  sin(theta), 0],
                   [-sin(theta), cos(theta), 0],
                   [0,           0,          1]])
-    U = np.array([[x],
-                  [y],
-                  [z]])
     return np.dot(R, U)
+
+def vecteur(x, y, z):
+    """
+        Compose un vecteur à trois dimensions avec les valeurs données.
+    """
+    return np.array([[i(x)],
+                     [i(y)],
+                     [i(z)]])
 
 def xyzdepolaire(psi, phi, r):
     """
