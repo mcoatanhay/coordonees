@@ -8,7 +8,7 @@
 """
 
 # Import des modules
-import coord
+from coord import *
 import math
 import unittest
 
@@ -17,11 +17,11 @@ import unittest
 # Définitions fonctions et classes
 class CoordTest(unittest.TestCase):
     def test_rotations(self):
-        U0 = coord.vecteur(1, 2, 3)
-        U1 = coord.rotation1(math.pi/2, U0)
-        U2 = coord.rotation2(math.pi/2, U1)
-        U3 = coord.rotation3(math.pi/2, U2)
-        reponse = coord.vecteur(3, -2, 1)
+        U0 = vecteur(1, 2, 3)
+        U1 = rotation1(math.pi/2, U0)
+        U2 = rotation2(math.pi/2, U1)
+        U3 = rotation3(math.pi/2, U2)
+        reponse = vecteur(3, -2, 1)
         test = True
         i = 0
         for ligne in U3:
@@ -30,7 +30,7 @@ class CoordTest(unittest.TestCase):
                 test = test and (colonne == reponse[i][j])
                 j += 1
             i += 1
-        self.assertTrue(test)
+        self.assertTrue(egalite_vecteurs(reponse, U3))
 
 if (__name__ == "__main__"):
     unittest.main()
